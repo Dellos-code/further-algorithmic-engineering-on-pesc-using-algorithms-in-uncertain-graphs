@@ -1,0 +1,33 @@
+\documentclass[11pt]{article}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{iftex}
+\setmainfont{FreeSerif}[RawFeature={-ccmp}]
+\newcommand{\EvidenceMode}{synthetic}
+\newcommand{\RealCount}{zero}
+\newcommand{\FrozenCovariate}{kappa E}
+\newcommand{\FrozenFamily}{logistic}
+\begin{document}
+\section*{Regime-adaptive rank fusion of W1 and message passing}
+\textbf{Evidence mode.} The available continuation checkout contained no
+recoverable real-network acquisition manifest or pilot branch. The analysis is
+therefore reported as evidence from synthetic graphs only; \RealCount{} real
+networks were available in this checkout.
+
+\textbf{Method.} W1 and two-iteration Karrer--Newman--Zdeborová message passing
+are reused as members. Their ascending vertex ranks are combined as
+$F_c=(1-c)r(W1)+cr(MP2)$. The selection objective uses the independent
+development sample and never uses evaluation labels.
+
+\textbf{Covariates and selection.} The primary covariate is the mean edge
+probability over existing edges. Challengers include expected degree,
+escape probability, matrix and non-backtracking spectral radii, message
+passing giant-component mass, and the configuration-model branching factor.
+The recorded development candidate uses \FrozenCovariate{} with a
+\FrozenFamily{} response.
+
+\textbf{Limitations.} The missing pilot artifacts prevent a faithful
+reconstruction of the requested v1 comparison, and the available acquisition
+environment did not yield a real network. Results must not be interpreted as
+real-network evidence.
+\end{document}
