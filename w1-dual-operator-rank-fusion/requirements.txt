@@ -1,0 +1,7 @@
+# Versions with which every stored number was produced and reproduced.
+# Instance regeneration depends on the NetworkX and NumPy random generators,
+# so other versions may produce different graphs; the shipped data do not change.
+numpy==2.5.3
+scipy==1.18.1
+pandas==3.0.5
+networkx==3.7

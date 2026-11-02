@@ -1,0 +1,75 @@
+{
+  "big": {
+    "friedman_p": 3.3202793544342903e-10,
+    "friedman_stat": 55.717352415026824,
+    "matches_source": {
+      "friedman_stat": 0.0,
+      "losses_labelled_t": true,
+      "mean_diff": 6.938893903907228e-17,
+      "p": 9.80118763926896e-17,
+      "p_holm": 9.71445146547012e-17,
+      "ties_labelled_l": true,
+      "wins": true
+    }
+  },
+  "prior": {
+    "friedman_p": 1.9752628325059358e-26,
+    "friedman_stat": 133.86110447047582
+  },
+  "prior2": {
+    "friedman_p": 1.1259432976387643e-32,
+    "friedman_stat": 163.40315638450517,
+    "matches_source": {
+      "friedman_stat": 0.0,
+      "losses_labelled_t": true,
+      "mean_diff": 1.3877787807814457e-16,
+      "p": 9.020562075079397e-17,
+      "p_holm": 9.410874857174178e-17,
+      "ties_labelled_l": true,
+      "wins": true
+    }
+  },
+  "real2": {
+    "friedman_p": 6.12992551550134e-08,
+    "friedman_stat": 44.409872849663444,
+    "matches_source": {
+      "friedman_stat": 0.0,
+      "losses_labelled_t": true,
+      "mean_diff": 1.0408340855860843e-16,
+      "p": 8.326672684688674e-17,
+      "p_holm": 8.326672684688674e-17,
+      "ties_labelled_l": true,
+      "wins": true
+    }
+  },
+  "scale2": {
+    "friedman_p": 3.2487461032312017e-22,
+    "friedman_stat": 113.80660565061693,
+    "matches_source": {
+      "friedman_stat": 0.0,
+      "losses_labelled_t": true,
+      "mean_diff": 1.1102230246251565e-16,
+      "p": 8.977193988179977e-17,
+      "p_holm": 7.632783294297951e-17,
+      "ties_labelled_l": true,
+      "wins": true
+    }
+  },
+  "test": {
+    "friedman_p": 3.4796493747384873e-44,
+    "friedman_stat": 217.54106520657083
+  },
+  "test2": {
+    "friedman_p": 2.1173443206011215e-43,
+    "friedman_stat": 213.86183555644106,
+    "matches_source": {
+      "friedman_stat": 0.0,
+      "losses_labelled_t": true,
+      "mean_diff": 1.0234868508263162e-16,
+      "p": 7.529784087911828e-17,
+      "p_holm": 5.789639601072594e-17,
+      "ties_labelled_l": true,
+      "wins": true
+    }
+  }
+}

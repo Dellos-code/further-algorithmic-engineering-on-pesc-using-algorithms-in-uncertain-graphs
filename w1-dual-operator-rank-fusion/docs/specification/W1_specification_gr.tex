@@ -1,0 +1,175 @@
+% Μεταγλώττιση: xelatex W1_specification_gr.tex (δύο φορές, για τις παραπομπές)
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{mathptmx}
+\usepackage{amssymb}
+\usepackage[no-math]{fontspec}
+\usepackage[english,main=greek]{babel}
+\babelfont{rm}[Language=Default,RawFeature={-ccmp}]{FreeSerif}
+\babelfont{sf}[Language=Default,RawFeature={-ccmp}]{FreeSans}
+\babelfont{tt}[Language=Default,Scale=0.86]{DejaVu Sans Mono}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% ---------------------------------------------------------------- συμβολισμός
+\newcommand{\Pesc}{P_{\mathrm{esc}}}
+\newcommand{\Pescbar}{\bar{P}_{\mathrm{esc}}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\one}{\mathbf{1}}
+\DeclareMathOperator{\clip}{clip}
+\DeclareMathOperator{\diag}{diag}
+
+% ---------------------------------------------------------------- παράμετροι
+% Τιμές από evidence/original/selected_mixing.json (W1) και w1/operators.py
+% (RULE_EW, RULE_CLIP)· μεταβάλλονται μόνο εδώ.
+\newcommand{\Czero}{0.502}
+\newcommand{\Cone}{0.558}
+\newcommand{\Amin}{0.4}
+\newcommand{\Amax}{1}
+\newcommand{\Tol}{10^{-12}}
+\newcommand{\Tmax}{20\,000}
+\newcommand{\Gam}{16}
+\newcommand{\AB}{0.7}
+\newcommand{\KB}{3}
+\newcommand{\Beta}{0.7}
+\newcommand{\Pthr}{0.892}
+
+% ---------------------------------------------------------------- ψευδοκώδικας
+\floatname{algorithm}{Αλγόριθμος}
+\algrenewcommand\algorithmicrequire{\textbf{Είσοδος:}}
+\algrenewcommand\algorithmicensure{\textbf{Έξοδος:}}
+\algrenewcommand\algorithmicfor{\textbf{για}}
+\algrenewcommand\algorithmicforall{\textbf{για κάθε}}
+\algrenewcommand\algorithmicdo{\textbf{εκτέλεσε}}
+\algrenewcommand\algorithmicrepeat{\textbf{επανάλαβε}}
+\algrenewcommand\algorithmicuntil{\textbf{μέχρι}}
+\algrenewcommand\algorithmicreturn{\textbf{επίστρεψε}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill{\footnotesize$\triangleright$~#1}}
+\algnewcommand\algorithmicparams{\textbf{Παράμετροι:}}
+\algnewcommand\Params{\item[\algorithmicparams]}
+\algnewcommand{\Section}[1]{\Statex\hspace*{-\algorithmicindent}\hspace*{1.5em}\textit{#1}}
+
+\title{\textbf{Εξομάλυνση διπλού τελεστή με συνδυασμό τάξεων\\ για την κατάταξη προσβασιμότητας\\ σε στοχαστικά γραφήματα}\\[6pt]
+\large Προδιαγραφή του αλγορίθμου W1}
+\author{Ιωάννης Κωνσταντέλλος\\[2pt]
+\small Τμήμα Μηχανικών Ηλεκτρονικών Υπολογιστών και Πληροφορικής\\
+\small Πανεπιστήμιο Πατρών}
+\date{Νοέμβριος 2026}
+
+\begin{document}
+\maketitle
+
+\section{Πρόβλημα και συμβολισμός}
+
+Έστω $G=(V,E)$ ένα μη κατευθυνόμενο γράφημα με $n=|V|$ κορυφές και $m=|E|$ ακμές, στο οποίο κάθε ακμή $(i,j)\in E$ υπάρχει ανεξάρτητα με πιθανότητα $p_{ij}\in(0,1]$, και έστω $x\in\mathbb{R}^n_{>0}$ με $\sum_i x_i=1$ μια αρχική κατανομή (prior) επί των κορυφών. Σε έναν δειγματοληπτημένο κόσμο $G'\sim G$, έστω $C(i)$ η συνεκτική συνιστώσα της κορυφής $i$. Ζητούμενο είναι η κατάταξη των κορυφών ως προς την \emph{αναμενόμενη προσβάσιμη μάζα}
+\[
+y^*_i=\mathbb{E}_{G'\sim G}\Big[\sum_{v\in C(i)}x_v\Big],
+\]
+η οποία για ομοιόμορφο $x$ ισούται με την αναμενόμενη εξάπλωση $\sigma(\{i\})/n$ ενός μοναδικού σπόρου στο μοντέλο ανεξάρτητων διαδόσεων (independent cascade) επί του $G$. Ο ακριβής υπολογισμός του $y^*$ είναι \#P-δύσκολος.
+
+Χρησιμοποιούμε τον ακόλουθο συμβολισμό. Γράφουμε $j\sim i$ όταν $(i,j)\in E$. Για διάνυσμα $v$ με θετικό άθροισμα, $\N(v)=v/\sum_i v_i$. Το $\clip(u,\ell,h)=\min\{h,\max\{\ell,u\}\}$ περιορίζει το $u$ στο διάστημα $[\ell,h]$. Το $r(v)\in\mathbb{R}^n$ είναι το διάνυσμα των τάξεων του $v$ σε αύξουσα διάταξη (η μικρότερη τιμή λαμβάνει τάξη $1$ και η μεγαλύτερη τάξη $n$)· πριν από την κατάταξη οι τιμές στρογγυλοποιούνται σε ακέραια πολλαπλάσια του $10^{-12}\max_j|v_j|$, και όσες συμπίπτουν μετά τη στρογγυλοποίηση θεωρούνται ισοπαλίες και λαμβάνουν τη μέση τάξη τους. Οι πράξεις μεταξύ διανυσμάτων, όπως $a_j/x_j$, νοούνται κατά συνιστώσα.
+
+\section{Ο αλγόριθμος}
+
+Ο Αλγόριθμος~\ref{alg:w1} συνδυάζει δύο διαδόσεις. Η Φάση~Α εκτελεί κανονικοποιημένη διάχυση με απόσβεση στον τελεστή έλξης με κλιμάκωση διαφυγής $EW$, με βαθμωτό συντελεστή απόσβεσης που δίνει ο βαθμονομημένος κανόνας της προηγούμενης εργασίας, έως το σταθερό σημείο. Το αποτέλεσμά της εμφυτεύεται στην κλίμακα περίσσειας και αποτελεί την αφετηρία της Φάσης~Β, η οποία εκτελεί λίγα βήματα ακατέργαστης διάδοσης με σταθερό συντελεστή απόσβεσης στον τελεστή $EP$. Η έξοδος είναι ο σταθμισμένος μέσος όρος των τάξεων των δύο φάσεων.
+
+\begin{algorithm}[H]
+\caption{W1 --- εξομάλυνση διπλού τελεστή με συνδυασμό τάξεων}\label{alg:w1}
+\small
+\begin{algorithmic}[1]
+\Require γράφημα $G=(V,E)$· πιθανότητες ακμών $p_{ij}\in(0,1]$· αρχική κατανομή $x>0$ με $\sum_i x_i=1$
+\Ensure βαθμολογία $s\in\mathbb{R}^n$· οι κορυφές κατατάσσονται κατά φθίνουσα $s$
+\Params $c_0,c_1$, $[\alpha_{\min},\alpha_{\max}]$, $\varepsilon$, $T_{\max}$, $\gamma$, $\alpha_B$, $K$, $\beta$ (Πίνακας~\ref{tab:params})
+\Section{Τελεστές και πιθανότητα διαφυγής}
+\ForAll{$(i,j)\in E$}
+  \State $w_{ij}\gets w_{ji}\gets -\ln(1-p_{ij})$\label{line:w} \Comment{βάρος ακμής}
+\EndFor
+\ForAll{$i\in V$}
+  \State $d_i\gets\sum_{j\sim i}w_{ij}$
+  \State $P_{\mathrm{esc},i}\gets 1-e^{-d_i}$ \Comment{$=1-\prod_{j\sim i}(1-p_{ij})$}
+\EndFor
+\State $W_{ij}\gets w_{ij}/d_i$ για $j\sim i$, αλλιώς $0$ \Comment{στοχαστικός κατά γραμμή}
+\State $EW\gets\diag(\Pesc)\,W$, \quad $EP\gets\diag(\Pesc)\,P$ \Comment{$P_{ij}=p_{ij}$}
+\Section{Φάση Α: διάχυση με τον βαθμονομημένο κανόνα έως το σταθερό σημείο}
+\State $\Pescbar\gets\frac1n\sum_iP_{\mathrm{esc},i}$
+\State $\alpha_A\gets\clip\big(c_0+c_1\,\Pescbar,\ \alpha_{\min},\ \alpha_{\max}\big)$ \Comment{ένας αριθμός για όλο το $G$}
+\State $y\gets x$;\quad $t\gets 0$
+\Repeat
+  \State $y'\gets\tfrac12\big[\,y+(1-\alpha_A)\,x+\alpha_A\,EW\,y\,\big]$ \Comment{οκνηρό βήμα}
+  \State $y'\gets\N(y')$
+  \State $\delta\gets\lVert y'-y\rVert_1$;\quad $y\gets y'$;\quad $t\gets t+1$
+\Until{$\delta<\varepsilon$ \textbf{ή} $t=T_{\max}$}
+\State $a\gets y$
+\Section{Εμφύτευση στην κλίμακα περίσσειας}
+\State $z\gets a\,\Big/\Big(\frac1n\sum_j a_j/x_j\Big)$\label{line:z} \Comment{$\frac1n\sum_j z_j/x_j=1$}
+\State $b\gets x+\gamma\,z$ \Comment{$\frac1n\sum_j(b_j-x_j)/x_j=\gamma$}
+\Section{Φάση Β: $K$ βήματα ακατέργαστης διάδοσης}
+\For{$k=1,\dots,K$}
+  \State $b\gets(1-\alpha_B)\,x+\alpha_B\,EP\,b$ \Comment{χωρίς κανονικοποίηση}
+\EndFor
+\Section{Συνδυασμός τάξεων}
+\State $s\gets(1-\beta)\,r(a)+\beta\,r(b)$
+\State \Return $s$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{table}[H]
+\centering
+\caption{Παράμετροι του W1.}\label{tab:params}
+\small
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Σύμβολο & Τιμή & Ρόλος \\
+\midrule
+$c_0,\ c_1$ & $\Czero,\ \Cone$ & συντελεστές του βαθμονομημένου κανόνα απόσβεσης της Φάσης Α \\
+$[\alpha_{\min},\alpha_{\max}]$ & $[\Amin,\Amax]$ & επιτρεπτό διάστημα του $\alpha_A$ \\
+$\varepsilon$ & $\Tol$ & ανοχή σύγκλισης της Φάσης Α (νόρμα $L_1$) \\
+$T_{\max}$ & $\Tmax$ & μέγιστο πλήθος επαναλήψεων της Φάσης Α \\
+$\gamma$ & $\Gam$ & μέσος λόγος περίσσειας της αφετηρίας της Φάσης Β \\
+$\alpha_B$ & $\AB$ & σταθερός συντελεστής απόσβεσης της Φάσης Β \\
+$K$ & $\KB$ & πλήθος βημάτων της Φάσης Β \\
+$\beta$ & $\Beta$ & βάρος της Φάσης Β στον συνδυασμό τάξεων \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Οι παράμετροι $\gamma,\alpha_B,K,\beta$ και ο τελεστής της Φάσης Β επιλέχθηκαν με κλιμακωτή αναζήτηση στο σύνολο ανάπτυξης ($180$ γραφήματα με $n=100$) και καταγράφηκαν στο αρχείο \path{evidence/original/selected_mixing.json}, μαζί με το αποτύπωμα SHA-256 του αρχείου, πριν από οποιαδήποτε αξιολόγηση στα σύνολα επιβεβαίωσης. Οι $c_0,c_1,\alpha_{\min},\alpha_{\max}$ είναι οι τιμές του βαθμονομημένου κανόνα της προηγούμενης εργασίας και δεν επαναπροσαρμόστηκαν. Η διαδικασία επιλογής και τα αποτελέσματα επιβεβαίωσης παρουσιάζονται στο συνοδευτικό έγγραφο πειραματικής τεκμηρίωσης (\path{docs/evidence/W1_evidence_gr.pdf}).
+
+\section{Παρατηρήσεις}
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=3pt]
+\item \textbf{Κοινή προέλευση βαρών και πιθανότητας διαφυγής.} Επειδή $\ln\prod_{j\sim i}(1-p_{ij})=-\sum_{j\sim i}w_{ij}=-d_i$, ισχύει $P_{\mathrm{esc},i}=1-e^{-d_i}$: η πιθανότητα να υπάρχει τουλάχιστον μία ακμή της $i$ είναι συνάρτηση του σταθμισμένου βαθμού της στον $W$. Για απομονωμένη κορυφή ($d_i=0$) η γραμμή $i$ των $W$, $EW$ και $EP$ είναι μηδενική.
+
+\item \textbf{Οκνηρό βήμα.} Αφού $\sum_i y_i=1$, ισχύει $(1-\alpha_A)x=(1-\alpha_A)x\one^{\top}y$, οπότε το σταθερό σημείο της Φάσης Α είναι το διάνυσμα Perron του $B=(1-\alpha_A)\,x\one^{\top}+\alpha_A\,EW$. Για $\alpha_A<1$ ο πίνακας $B$ είναι θετικός, οπότε η ρίζα Perron του είναι απλή και αυστηρά κυρίαρχη. Σε διμερή γραφήματα όμως ο $B$ έχει ιδιοτιμή κοντά στο $-\rho(B)$ όταν το $\alpha_A$ είναι κοντά στο 1, και ίση με $-\rho(B)$ όταν $\alpha_A=1$, οπότε η απλή μέθοδος δυνάμεων συγκλίνει αργά ή ταλαντεύεται. Η επανάληψη με τον πίνακα $\tfrac12(I+B)$ έχει το ίδιο σταθερό σημείο και συγκλίνει και σε αυτές τις περιπτώσεις.
+
+\item \textbf{Κλίμακες των δύο φάσεων.} Η Φάση Α κανονικοποιείται σε κάθε βήμα, άρα μόνο η κατεύθυνση του $a$ έχει σημασία· η γραμμή~\ref{line:z} το επαναφέρει στην κλίμακα του $x$. Η Φάση Β είναι αφινική και δεν κανονικοποιείται. Μετά από $K$ βήματα
+\[
+b^{(K)}=(\alpha_B\,EP)^{K}\,b^{(0)}+(1-\alpha_B)\sum_{k=0}^{K-1}(\alpha_B\,EP)^{k}\,x ,
+\]
+οπότε ο πολλαπλασιασμός της αφετηρίας $b^{(0)}$ με μια σταθερά μεταβάλλει τη σχετική βαρύτητα των δύο όρων και άρα την κατάταξη. Για τον λόγο αυτό η αφετηρία $b^{(0)}=x+\gamma z$ δεν κανονικοποιείται (για παράδειγμα, σε $(x+\gamma z)/(1+\gamma)$): η κλίμακά της είναι μέρος της παραμετροποίησης και ορίζεται από τη σύμβαση της κλίμακας περίσσειας, ότι ο μέσος λόγος $(b^{(0)}_j-x_j)/x_j$ ισούται με $\gamma$.
+
+\item \textbf{Αριθμητική υλοποίηση.} Για $K=\KB$ η ακατέργαστη αναδρομή υπολογίζεται απευθείας σε αριθμητική διπλής ακρίβειας. Για μεγαλύτερα $K$ η υλοποίηση αναπαριστά το $b$ ως μοναδιαίο διάνυσμα και λογαριθμικό συντελεστή κλίμακας, ώστε να αποφεύγεται η υπερχείλιση χωρίς να αλλοιώνεται η αφινική αναδρομή. Μέσα στους λογαρίθμους της γραμμής~\ref{line:w} το $p_{ij}$ περιορίζεται στο $1-10^{-12}$, ώστε μια ακμή με $p_{ij}=1$ να έχει πεπερασμένο βάρος· ο $EP$ χρησιμοποιεί τις αμετάβλητες πιθανότητες. Πριν από τη γραμμή~\ref{line:z} κάθε $a_j$ αντικαθίσταται από το $\max\{a_j,10^{-300}\}$.
+
+\item \textbf{Έξοδος.} Η βαθμολογία $s$ δεν είναι εκτίμηση του $y^*$· χρησιμεύει μόνο για τη διάταξη των κορυφών. Ο συνδυασμός γίνεται σε τάξεις και όχι σε τιμές, επειδή τα $a$ και $b$ βρίσκονται σε διαφορετικές κλίμακες.
+
+\item \textbf{Οριακή περίπτωση.} Όταν $\Pescbar\ge(1-c_0)/c_1\approx\Pthr$, ο κανόνας δίνει $\alpha_A=\alpha_{\max}=1$ και ο όρος επανεκκίνησης $(1-\alpha_A)x$ μηδενίζεται. Τότε η Φάση Α υπολογίζει το διάνυσμα Perron του οκνηρού $EW$, το οποίο γενικά δεν εξαρτάται από το $x$· σε μη συνεκτικό γράφημα συγκεντρώνεται στη συνιστώσα με τη μεγαλύτερη φασματική ακτίνα, και οι τιμές της Φάσης Α στις υπόλοιπες κορυφές φθίνουν προς το μηδέν, οπότε μπορεί να ισοβαθμούν στο $r(a)$. Σε πλεγματικά γραφήματα η σύγκλιση μπορεί να μην ολοκληρωθεί εντός $T_{\max}$ επαναλήψεων.
+\end{enumerate}
+
+\section{Πολυπλοκότητα}
+
+Η κατασκευή των τελεστών απαιτεί χρόνο $O(n+m)$. Κάθε επανάληψη της Φάσης Α και κάθε βήμα της Φάσης Β είναι ένας πολλαπλασιασμός αραιού πίνακα με διάνυσμα, κόστους $O(n+m)$, και ο υπολογισμός των τάξεων απαιτεί $O(n\log n)$. Αν $t_A$ είναι το πλήθος επαναλήψεων της Φάσης Α, ο συνολικός χρόνος είναι
+\[
+O\big((t_A+K)(n+m)+n\log n\big),
+\]
+και ο χώρος $O(n+m)$. Ο αλγόριθμος είναι ντετερμινιστικός και δεν απαιτεί εκπαίδευση ούτε δειγματοληψία κόσμων.
+
+\end{document}

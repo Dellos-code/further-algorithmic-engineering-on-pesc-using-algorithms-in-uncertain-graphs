@@ -1,0 +1,166 @@
+% Compile: xelatex W1_specification_en.tex (twice, for the cross-references)
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{mathptmx}
+\usepackage{amssymb}
+\usepackage[no-math]{fontspec}
+\usepackage[greek,main=english]{babel}
+\babelfont{rm}[Language=Default,RawFeature={-ccmp}]{FreeSerif}
+\babelfont{sf}[Language=Default,RawFeature={-ccmp}]{FreeSans}
+\babelfont{tt}[Language=Default,Scale=0.86]{DejaVu Sans Mono}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% ---------------------------------------------------------------- notation
+\newcommand{\Pesc}{P_{\mathrm{esc}}}
+\newcommand{\Pescbar}{\bar{P}_{\mathrm{esc}}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\one}{\mathbf{1}}
+\DeclareMathOperator{\clip}{clip}
+\DeclareMathOperator{\diag}{diag}
+
+% ---------------------------------------------------------------- parameters
+% Values from evidence/original/selected_mixing.json (W1) and w1/operators.py
+% (RULE_EW, RULE_CLIP); change them here only.
+\newcommand{\Czero}{0.502}
+\newcommand{\Cone}{0.558}
+\newcommand{\Amin}{0.4}
+\newcommand{\Amax}{1}
+\newcommand{\Tol}{10^{-12}}
+\newcommand{\Tmax}{20\,000}
+\newcommand{\Gam}{16}
+\newcommand{\AB}{0.7}
+\newcommand{\KB}{3}
+\newcommand{\Beta}{0.7}
+\newcommand{\Pthr}{0.892}
+
+% ---------------------------------------------------------------- pseudocode
+\algrenewcommand{\algorithmiccomment}[1]{\hfill{\footnotesize$\triangleright$~#1}}
+\algnewcommand\algorithmicparams{\textbf{Parameters:}}
+\algnewcommand\Params{\item[\algorithmicparams]}
+\algnewcommand{\Section}[1]{\Statex\hspace*{-\algorithmicindent}\hspace*{1.5em}\textit{#1}}
+
+\title{\textbf{Dual-Operator Polishing with Rank Fusion\\ for Reachability Ranking in Uncertain Graphs}\\[6pt]
+\large Specification of the W1 algorithm}
+\author{Ioannis Konstantellos\\[2pt]
+\small Computer Engineering and Informatics Department\\
+\small University of Patras}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\section{Problem and notation}
+
+Let $G=(V,E)$ be an undirected graph with $n=|V|$ vertices and $m=|E|$ edges, in which every edge $(i,j)\in E$ is present independently with probability $p_{ij}\in(0,1]$, and let $x\in\mathbb{R}^n_{>0}$ with $\sum_i x_i=1$ be a prior distribution over the vertices. In a sampled world $G'\sim G$, let $C(i)$ denote the connected component of vertex $i$. The task is to rank the vertices by their \emph{expected reachable mass}
+\[
+y^*_i=\mathbb{E}_{G'\sim G}\Big[\sum_{v\in C(i)}x_v\Big],
+\]
+which, for uniform $x$, equals the expected spread $\sigma(\{i\})/n$ of a single seed in the independent cascade model on $G$. Computing $y^*$ exactly is \#P-hard.
+
+We use the following notation. We write $j\sim i$ when $(i,j)\in E$. For a vector $v$ with positive sum, $\N(v)=v/\sum_i v_i$. The function $\clip(u,\ell,h)=\min\{h,\max\{\ell,u\}\}$ restricts $u$ to the interval $[\ell,h]$. The vector $r(v)\in\mathbb{R}^n$ holds the ranks of $v$ in ascending order (the smallest value has rank $1$ and the largest rank $n$); before ranking, the values are rounded to integer multiples of $10^{-12}\max_j|v_j|$, and values that coincide after rounding are ties and receive their average rank. Operations between vectors, such as $a_j/x_j$, are taken componentwise.
+
+\section{The algorithm}
+
+Algorithm~\ref{alg:w1} combines two propagations. Phase~A runs a normalised damped diffusion on the escape-scaled pull operator $EW$ to its fixed point, with a scalar damping factor given by the calibrated rule of the earlier study. Its result is embedded in the excess scale and becomes the starting point of Phase~B, which performs a few steps of raw propagation with a constant damping factor on the operator $EP$. The output is the weighted average of the ranks of the two phases.
+
+\begin{algorithm}[H]
+\caption{W1 --- dual-operator polishing with rank fusion}\label{alg:w1}
+\small
+\begin{algorithmic}[1]
+\Require graph $G=(V,E)$; edge probabilities $p_{ij}\in(0,1]$; prior $x>0$ with $\sum_i x_i=1$
+\Ensure score $s\in\mathbb{R}^n$; vertices are ranked by decreasing $s$
+\Params $c_0,c_1$, $[\alpha_{\min},\alpha_{\max}]$, $\varepsilon$, $T_{\max}$, $\gamma$, $\alpha_B$, $K$, $\beta$ (Table~\ref{tab:params})
+\Section{Operators and escape probability}
+\ForAll{$(i,j)\in E$}
+  \State $w_{ij}\gets w_{ji}\gets -\ln(1-p_{ij})$\label{line:w} \Comment{edge weight}
+\EndFor
+\ForAll{$i\in V$}
+  \State $d_i\gets\sum_{j\sim i}w_{ij}$
+  \State $P_{\mathrm{esc},i}\gets 1-e^{-d_i}$ \Comment{$=1-\prod_{j\sim i}(1-p_{ij})$}
+\EndFor
+\State $W_{ij}\gets w_{ij}/d_i$ for $j\sim i$, otherwise $0$ \Comment{row-stochastic}
+\State $EW\gets\diag(\Pesc)\,W$, \quad $EP\gets\diag(\Pesc)\,P$ \Comment{$P_{ij}=p_{ij}$}
+\Section{Phase A: diffusion with the calibrated rule to the fixed point}
+\State $\Pescbar\gets\frac1n\sum_iP_{\mathrm{esc},i}$
+\State $\alpha_A\gets\clip\big(c_0+c_1\,\Pescbar,\ \alpha_{\min},\ \alpha_{\max}\big)$ \Comment{one number for all of $G$}
+\State $y\gets x$;\quad $t\gets 0$
+\Repeat
+  \State $y'\gets\tfrac12\big[\,y+(1-\alpha_A)\,x+\alpha_A\,EW\,y\,\big]$ \Comment{lazy step}
+  \State $y'\gets\N(y')$
+  \State $\delta\gets\lVert y'-y\rVert_1$;\quad $y\gets y'$;\quad $t\gets t+1$
+\Until{$\delta<\varepsilon$ \textbf{or} $t=T_{\max}$}
+\State $a\gets y$
+\Section{Embedding in the excess scale}
+\State $z\gets a\,\Big/\Big(\frac1n\sum_j a_j/x_j\Big)$\label{line:z} \Comment{$\frac1n\sum_j z_j/x_j=1$}
+\State $b\gets x+\gamma\,z$ \Comment{$\frac1n\sum_j(b_j-x_j)/x_j=\gamma$}
+\Section{Phase B: $K$ steps of raw propagation}
+\For{$k=1,\dots,K$}
+  \State $b\gets(1-\alpha_B)\,x+\alpha_B\,EP\,b$ \Comment{no normalisation}
+\EndFor
+\Section{Rank fusion}
+\State $s\gets(1-\beta)\,r(a)+\beta\,r(b)$
+\State \Return $s$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{table}[H]
+\centering
+\caption{Parameters of W1.}\label{tab:params}
+\small
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Symbol & Value & Role \\
+\midrule
+$c_0,\ c_1$ & $\Czero,\ \Cone$ & coefficients of the calibrated damping rule of Phase A \\
+$[\alpha_{\min},\alpha_{\max}]$ & $[\Amin,\Amax]$ & admissible interval of $\alpha_A$ \\
+$\varepsilon$ & $\Tol$ & convergence tolerance of Phase A ($L_1$ norm) \\
+$T_{\max}$ & $\Tmax$ & maximum number of Phase-A iterations \\
+$\gamma$ & $\Gam$ & mean excess ratio of the Phase-B starting point \\
+$\alpha_B$ & $\AB$ & constant damping factor of Phase B \\
+$K$ & $\KB$ & number of Phase-B steps \\
+$\beta$ & $\Beta$ & weight of Phase B in the rank fusion \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The parameters $\gamma,\alpha_B,K,\beta$ and the Phase-B operator were selected by a staged search on the development panel ($180$ graphs with $n=100$) and recorded in the file \path{evidence/original/selected_mixing.json}, together with the file's SHA-256 digest, before any evaluation on the confirmation panels. The values $c_0,c_1,\alpha_{\min},\alpha_{\max}$ are those of the calibrated rule of the earlier study and were not refitted. The selection procedure and the confirmation results are presented in the accompanying evidence report (\path{docs/evidence/W1_evidence_en.pdf}).
+
+\section{Remarks}
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=3pt]
+\item \textbf{Common origin of the weights and the escape probability.} Since $\ln\prod_{j\sim i}(1-p_{ij})=-\sum_{j\sim i}w_{ij}=-d_i$, we have $P_{\mathrm{esc},i}=1-e^{-d_i}$: the probability that at least one edge of $i$ is present is a function of its weighted degree in $W$. For an isolated vertex ($d_i=0$), row $i$ of $W$, $EW$ and $EP$ is zero.
+
+\item \textbf{Lazy step.} Since $\sum_i y_i=1$, we have $(1-\alpha_A)x=(1-\alpha_A)x\one^{\top}y$, so the fixed point of Phase A is the Perron vector of $B=(1-\alpha_A)\,x\one^{\top}+\alpha_A\,EW$. For $\alpha_A<1$ the matrix $B$ is positive, so its Perron root is simple and strictly dominant. On bipartite graphs, however, $B$ has an eigenvalue close to $-\rho(B)$ when $\alpha_A$ is close to 1, and equal to $-\rho(B)$ when $\alpha_A=1$, so that the plain power method converges slowly or oscillates. The iteration with the matrix $\tfrac12(I+B)$ has the same fixed point and converges in these cases as well.
+
+\item \textbf{Scales of the two phases.} Phase A is normalised at every step, so only the direction of $a$ matters; line~\ref{line:z} brings it back to the scale of $x$. Phase B is affine and is not normalised. After $K$ steps
+\[
+b^{(K)}=(\alpha_B\,EP)^{K}\,b^{(0)}+(1-\alpha_B)\sum_{k=0}^{K-1}(\alpha_B\,EP)^{k}\,x ,
+\]
+so multiplying the starting point $b^{(0)}$ by a constant changes the relative weight of the two terms and hence the ranking. For this reason the starting point $b^{(0)}=x+\gamma z$ is not normalised (for example, to $(x+\gamma z)/(1+\gamma)$): its scale is part of the parametrisation and is fixed by the convention of the excess scale, namely that the mean ratio $(b^{(0)}_j-x_j)/x_j$ equals $\gamma$.
+
+\item \textbf{Numerical implementation.} For $K=\KB$ the raw recursion is computed directly in double-precision arithmetic. For larger $K$ the implementation represents $b$ as a unit vector and a logarithmic scale factor, which avoids overflow without altering the affine recursion. Inside the logarithms of line~\ref{line:w}, $p_{ij}$ is capped at $1-10^{-12}$, so that an edge with $p_{ij}=1$ has a finite weight; $EP$ uses the unmodified probabilities. Before line~\ref{line:z}, every $a_j$ is replaced by $\max\{a_j,10^{-300}\}$.
+
+\item \textbf{Output.} The score $s$ is not an estimate of $y^*$; it serves only to order the vertices. The fusion is performed on ranks rather than values, because $a$ and $b$ live on different scales.
+
+\item \textbf{Boundary case.} When $\Pescbar\ge(1-c_0)/c_1\approx\Pthr$, the rule gives $\alpha_A=\alpha_{\max}=1$ and the restart term $(1-\alpha_A)x$ vanishes. Phase A then computes the Perron vector of the lazy $EW$, which in general does not depend on $x$; on a disconnected graph it concentrates on the component with the largest spectral radius, and the Phase-A scores of the other vertices decay towards zero, so that they may tie in $r(a)$. On lattice graphs convergence may not be reached within $T_{\max}$ iterations.
+\end{enumerate}
+
+\section{Complexity}
+
+Building the operators takes time $O(n+m)$. Every Phase-A iteration and every Phase-B step is one sparse matrix--vector product of cost $O(n+m)$, and computing the ranks takes $O(n\log n)$. If $t_A$ is the number of Phase-A iterations, the total time is
+\[
+O\big((t_A+K)(n+m)+n\log n\big),
+\]
+and the space is $O(n+m)$. The algorithm is deterministic and requires neither training nor the sampling of worlds.
+
+\end{document}

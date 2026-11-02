@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software or its data, please cite it as below."
+title: "W1: Dual-Operator Polishing with Rank Fusion for Reachability Ranking in Uncertain Graphs"
+type: software
+authors:
+  - family-names: Konstantellos
+    given-names: Ioannis
+    affiliation: "Computer Engineering and Informatics Department, University of Patras"
+license:
+  - MIT
+  - CC-BY-4.0
+version: "1.0.0"
+date-released: "2026-11-01"
+keywords:
+  - uncertain graphs
+  - reachability ranking
+  - influence spread
+  - damped diffusion
+  - rank fusion

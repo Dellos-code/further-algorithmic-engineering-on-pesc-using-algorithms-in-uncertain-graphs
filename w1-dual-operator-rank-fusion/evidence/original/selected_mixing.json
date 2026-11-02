@@ -1,0 +1,85 @@
+{
+  "baselines": {
+    "reproduction": {
+      "CTRL_lin0.9": {
+        "fusion": {
+          "beta": 0.5,
+          "method": "rank_mean"
+        },
+        "phase_a": {
+          "damping": "rule_EW",
+          "operator": "EW",
+          "steps": "FP"
+        },
+        "phase_b": {
+          "damping": 0.9,
+          "gamma": 1.0,
+          "normalisation": "none",
+          "operator": "P",
+          "start": "excess_embed",
+          "steps": 5
+        }
+      },
+      "IRIE_exact": {
+        "damping": "min(0.7,0.95/rho(P))",
+        "iterations": 400,
+        "operator": "P",
+        "tolerance": 1e-12
+      },
+      "rule_EW": {
+        "damping": "rule_EW",
+        "operator": "EW",
+        "steps": "FP"
+      },
+      "rule_WT": {
+        "damping": "rule_WT",
+        "operator": "WT",
+        "steps": "FP"
+      }
+    },
+    "selection_panel": "dev",
+    "status": "S0 audit only; dev-tuned baselines are not frozen until S1"
+  },
+  "confirmatory_family": [
+    "CTRL_lin0.9",
+    "IRIE_exact",
+    "rule_EW",
+    "rule_WT",
+    "MP2",
+    "best_const_alpha_dev",
+    "oracle:scalar"
+  ],
+  "created_utc": "2026-10-31T17:03:41.145000+00:00",
+  "winners": [
+    {
+      "bootstrap_top1": 0.274,
+      "config": {
+        "beta": 0.7,
+        "damping": 0.7,
+        "gamma": 16.0,
+        "kind": "hybrid",
+        "name": "W1",
+        "operator": "EP",
+        "steps": 3
+      },
+      "config_id": "7580cfc826f3f26c8b587f9ea90bcab2d2a81d27",
+      "dev_rho": 0.9133017993128375,
+      "name": "W1"
+    },
+    {
+      "bootstrap_top1": 0.184,
+      "config": {
+        "beta": 0.75,
+        "damping": 0.7,
+        "gamma": 16.0,
+        "kind": "hybrid",
+        "name": "W3",
+        "operator": "EP",
+        "steps": 3
+      },
+      "config_id": "ee171c42caa3c21bfecf6f03eb9e6110548bd7d3",
+      "dev_rho": 0.9131831681458378,
+      "name": "W3"
+    }
+  ]
+}

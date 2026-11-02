@@ -1,0 +1,41 @@
+{
+  "selection_panel": "dev",
+  "status": "S0 audit only; dev-tuned baselines are not frozen until S1",
+  "reproduction": {
+    "CTRL_lin0.9": {
+      "phase_a": {
+        "operator": "EW",
+        "damping": "rule_EW",
+        "steps": "FP"
+      },
+      "phase_b": {
+        "operator": "P",
+        "damping": 0.9,
+        "steps": 5,
+        "normalisation": "none",
+        "start": "excess_embed",
+        "gamma": 1.0
+      },
+      "fusion": {
+        "method": "rank_mean",
+        "beta": 0.5
+      }
+    },
+    "rule_EW": {
+      "operator": "EW",
+      "damping": "rule_EW",
+      "steps": "FP"
+    },
+    "rule_WT": {
+      "operator": "WT",
+      "damping": "rule_WT",
+      "steps": "FP"
+    },
+    "IRIE_exact": {
+      "operator": "P",
+      "damping": "min(0.7,0.95/rho(P))",
+      "iterations": 400,
+      "tolerance": 1e-12
+    }
+  }
+}

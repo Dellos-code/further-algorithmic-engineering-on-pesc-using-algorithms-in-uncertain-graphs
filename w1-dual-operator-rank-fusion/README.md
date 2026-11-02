@@ -1,0 +1,133 @@
+# W1 — Dual-Operator Polishing with Rank Fusion for Reachability Ranking in Uncertain Graphs
+
+*Ioannis Konstantellos, Computer Engineering and Informatics Department, University of Patras*
+· [Ελληνικά](README_GR.md)
+
+W1 ranks the vertices of an **uncertain graph** (every edge present independently
+with a known probability) by their **expected reachable mass**
+y\*ᵢ = E[Σ_{v ∈ C(i)} xᵥ], the expected prior mass of the connected component of
+vertex *i* in a sampled world. For a uniform prior this is the single-seed influence
+spread of the independent cascade model. Exact computation is #P-hard; W1 is a
+deterministic, training-free heuristic of cost O((t_A + K)(n + m)).
+
+This repository is self-contained: the algorithm, the 984 benchmark instances with
+their Monte-Carlo ground truth, the complete record of the development search that
+selected W1, the frozen selection, the confirmation runs on held-out panels, and the
+code that regenerates every number of the two documents below.
+
+| document | content |
+|---|---|
+| [`docs/specification/W1_specification_en.pdf`](docs/specification/W1_specification_en.pdf) ([GR](docs/specification/W1_specification_gr.pdf)) | the algorithm: pseudocode, parameters, remarks, complexity |
+| [`docs/evidence/W1_evidence_en.pdf`](docs/evidence/W1_evidence_en.pdf) ([GR](docs/evidence/W1_evidence_gr.pdf)) | the experimental evidence: selection, freeze, confirmation, external hold-out, exploratory analyses, protocol deviations, reproduction |
+
+## The algorithm in one paragraph
+
+**Phase A** runs the normalised lazy diffusion y ← N(½[y + (1−α_A)x + α_A·EW·y]) on the
+escape-scaled pull operator EW = diag(P_esc)·W to its fixed point, with the calibrated
+scalar damping α_A = clip(0.502 + 0.558·mean(P_esc), 0.4, 1) of the earlier
+escape-probability study (P_esc,i = 1 − Π_{j~i}(1 − p_ij)). Its output *a* is embedded
+in the excess scale, b = x + 16·z with z = a / mean(a/x). **Phase B** runs exactly 3 raw
+steps b ← 0.3·x + 0.7·EP·b on EP = diag(P_esc)·P. The output is the **rank fusion**
+s = 0.3·r(a) + 0.7·r(b); vertices are ranked by decreasing s.
+
+```python
+from w1 import w1_from_arrays
+# edges: (m, 2) array of undirected edges; p: (m,) probabilities; x: optional prior
+scores = w1_from_arrays(edges, p, x)
+ranking = scores.argsort()[::-1]
+```
+
+## Headline results
+
+Mean Spearman correlation with the ground truth on the held-out panels (W1 and W3
+frozen before any of these runs; `oracle:scalar` chooses the best constant damping per
+instance from an independent ground-truth sample and is an upper bound of the
+constant-damping family, not a deployable method).
+
+<!-- RESULTS:BEGIN -->
+| method | `test2` | `scale2` | `prior2` | `real2` | `big` |
+|---|---:|---:|---:|---:|---:|
+| W1 | 0.9064 | 0.8650 | **0.9183** | 0.9625 | 0.9096 |
+| W3 | **0.9072** | **0.8651** | 0.9162 | **0.9638** | 0.9099 |
+| CTRL_lin0.9 (paper) | 0.8950 | 0.8611 | 0.9158 | 0.9463 | 0.9008 |
+| IRIE_exact | 0.8841 | 0.8302 | 0.8944 | 0.9398 | 0.8850 |
+| rule_EW | 0.8404 | 0.8050 | 0.8763 | 0.9013 | 0.8451 |
+| rule_WT | 0.8153 | 0.7474 | 0.8599 | 0.9124 | 0.8005 |
+| MP2 | 0.7491 | 0.7482 | 0.7859 | 0.9060 | **0.9351** |
+| oracle:scalar (upper bound) | 0.9009 | 0.8775 | 0.9109 | 0.9428 | 0.9570 |
+
+Instances: `test2` 180, `scale2` 90, `prior2` 150, `real2` 24, `big` 30. Paired Wilcoxon tests with Holm correction, bootstrap intervals and the external hold-out are in the evidence report.
+<!-- RESULTS:END -->
+
+## Where W1 is weaker
+
+On the panel of the largest graphs, two-iteration message passing has a higher mean than
+W1 (not significant), and the per-instance best constant damping is ahead of W1 on graphs
+of 900 vertices and more; both gaps lie in the regime of high edge probabilities, and more
+Phase-B steps do not close them. Against Monte Carlo at equal cost (exploratory), W1 is the
+better choice on large graphs with low edge probabilities, Monte Carlo on small graphs or
+at high probabilities. Details are in Sections 4 to 7 of the evidence report.
+
+## Layout
+
+| path | content |
+|---|---|
+| `w1/algorithm.py` | reference implementation of W1, line by line as in the specification |
+| `w1/hybrid.py` | the dual-operator search engine: configuration space, SHA-1 identifiers, evaluation of every configuration and comparator |
+| `w1/operators.py`, `w1/diffusion.py` | escape probability, operators, calibrated rules, diffusions, IRIE, message passing, the scalar oracle |
+| `w1/instances.py` | instance generators, panel specifications, Monte-Carlo ground truth, loading |
+| `w1/metrics.py`, `w1/stats.py` | Spearman (with tie tolerance), Kendall, top-k, NDCG; Wilcoxon, Holm, bootstrap |
+| `data/<panel>/` | the instances (`NNNN.npz`: edges, p, x, ground truth yA, yB, yA2) and `specs.json` |
+| `evidence/original/` | the source study's frozen selection, search matrices, confirmation files and statistics (see its `PROVENANCE.md`) |
+| `evidence/reproduced/` | everything regenerated by the scripts of this repository |
+| `external/escape_probability/` | the earlier study's code and hold-out benchmark, vendored unmodified |
+| `scripts/` | verification, search, confirmation, statistics, exploratory analyses, document assets |
+| `tests/` | unit tests and fast reproduction checks |
+| `docs/` | the specification and the evidence report (English and Greek, LaTeX and PDF) |
+
+## Reproduce
+
+Python 3.11 or later with the pinned versions of `requirements.txt` (the stored numbers
+were produced with Python 3.13); XeLaTeX with the FreeSerif and DejaVu Sans Mono fonts
+for the documents.
+
+```bash
+pip install -r requirements.txt
+python tests/test_algorithm.py && python tests/test_reproduction.py
+./reproduce.sh            # every step, with approximate times, in reproduce.sh
+```
+
+What the scripts verify:
+
+<!-- REPRO:BEGIN -->
+* all 984 instances regenerate bit for bit from their specifications (16 ground truths recomputed and identical);
+* the SHA-256 digest of the frozen selection matches, and W1 is the configuration with the highest mean development ρ among the stored search results;
+* 63,900 re-evaluations of 355 search configurations on the development panel agree with the stored values to within 1e-16;
+* the 6,432 stored confirmation rows (4 metrics each) and their statistics are reproduced to within 1e-16;
+* the external hold-out values of W1 and W3 are reproduced exactly.
+<!-- REPRO:END -->
+
+## Conventions
+
+* Primary metric: Spearman ρ between a method's scores and the evaluation ground truth
+  `yA` (2,000 Monte-Carlo worlds); scores equal to within a relative 10⁻¹² are ties.
+* Oracles are fitted on the independent sample `yB` and evaluated on `yA`.
+* The development panel is used for selection only; the confirmation panels were never
+  used to choose or change W1.
+* Analyses marked *exploratory* were not preregistered and use the confirmation panels
+  after the fact; they describe W1 and are not used to change it.
+* All randomness derives from explicit seeds; all instances regenerate bit for bit with
+  the pinned library versions.
+
+## Relation to the source study
+
+W1 is the configuration selected by the mixing study of the repository
+`self-consistent-proportional-per-node-damping-for-reachability-ranking-in-stochastic-graphs`
+(commit `6900c4d`), whose paper introduces the dual-operator polishing family; the
+paper's own configuration is reported here as `CTRL_lin0.9`. The calibrated damping rule
+of Phase A comes from the earlier study *Damping from the escape probability*.
+
+## License
+
+Code (`w1/`, `scripts/`, `tests/`): MIT License, see [`LICENSE`](LICENSE).
+Documents, data and stored results: CC BY 4.0, see [`LICENSE-docs-data.md`](LICENSE-docs-data.md).

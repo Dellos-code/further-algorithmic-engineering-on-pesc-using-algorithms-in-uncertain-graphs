@@ -1,0 +1,170 @@
+[
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.05-0.2",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.05-0.2",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.2-0.5",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.2-0.5",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.5-0.9",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "unif0.5-0.9",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "wc",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "karate",
+"scheme": "wc",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.05-0.2",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.05-0.2",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.2-0.5",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.2-0.5",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.5-0.9",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "unif0.5-0.9",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "wc",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "lesmis",
+"scheme": "wc",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.05-0.2",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.05-0.2",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.2-0.5",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.2-0.5",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.5-0.9",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "unif0.5-0.9",
+"prior": "dir1",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "wc",
+"prior": "uniform",
+"rep": 1
+},
+{
+"kind": "classic",
+"g": "davis",
+"scheme": "wc",
+"prior": "dir1",
+"rep": 1
+}
+]

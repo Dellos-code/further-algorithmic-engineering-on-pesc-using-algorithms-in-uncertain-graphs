@@ -1,0 +1,50 @@
+{
+  "big": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 30,
+    "regenerated_identical": 30
+  },
+  "dev": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 180,
+    "regenerated_identical": 180
+  },
+  "prior": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 150,
+    "regenerated_identical": 150
+  },
+  "prior2": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 150,
+    "regenerated_identical": 150
+  },
+  "real2": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 24,
+    "regenerated_identical": 24
+  },
+  "scale2": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 90,
+    "regenerated_identical": 90
+  },
+  "test": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 180,
+    "regenerated_identical": 180
+  },
+  "test2": {
+    "ground_truth_checked": 2,
+    "ground_truth_identical": 2,
+    "instances": 180,
+    "regenerated_identical": 180
+  }
+}

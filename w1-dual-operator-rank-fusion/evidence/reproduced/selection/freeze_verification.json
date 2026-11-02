@@ -1,0 +1,172 @@
+{
+  "bootstrap_top1": {
+    "W1": 0.2565,
+    "W1_source": 0.274,
+    "W3": 0.1745,
+    "W3_source": 0.184,
+    "configurations_ever_top1": 55,
+    "resamples": 2000
+  },
+  "dev_baselines": {
+    "IRIE_exact": 0.8800430078616746,
+    "IRIE_wc": 0.2251231048664128,
+    "MP1": 0.7507349724797516,
+    "MP2": 0.747857010087921,
+    "MPinf": 0.6614056160952578,
+    "Pesc": 0.7364848937653808,
+    "RAPr:0.5,0.5": 0.7102069293566049,
+    "RAPr:1,1": 0.7180138002722354,
+    "RAPr:2,1": 0.7446263079702842,
+    "TotalRank": 0.7180138002722354,
+    "fixed085": 0.7793640674772644,
+    "heat_kernel:1": 0.21942958764422152,
+    "heat_kernel:10": 0.1482562692993089,
+    "heat_kernel:2": 0.2051703590898521,
+    "heat_kernel:5": 0.17106600794562762,
+    "oracle:scalar": 0.9104716326831964,
+    "oracle:scalar_WT": 0.883162351285344,
+    "rule_EW": 0.8571149722111119,
+    "rule_WT": 0.8103576558942623
+  },
+  "dev_s0": {
+    "CTRL_lin0.9": 0.9037424706510296,
+    "IRIE_exact": 0.8800430078616746,
+    "rule_EW": 0.8571149722111119,
+    "rule_WT": 0.8103576558942623
+  },
+  "frozen_utc": "2026-10-31T17:03:41.145000+00:00",
+  "n_configs_registered": 20090,
+  "plateau": {
+    "0.001": {
+      "betas": [
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ],
+      "count": 10,
+      "dampings": [
+        "0.5",
+        "0.7",
+        "0.75"
+      ],
+      "gammas": [
+        16.0
+      ],
+      "operators": [
+        "EP",
+        "Plog"
+      ],
+      "steps": [
+        3
+      ]
+    },
+    "0.002": {
+      "betas": [
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85
+      ],
+      "count": 24,
+      "dampings": [
+        "0.5",
+        "0.6",
+        "0.7",
+        "0.75",
+        "0.8"
+      ],
+      "gammas": [
+        4.0,
+        16.0
+      ],
+      "operators": [
+        "EP",
+        "P",
+        "Plog"
+      ],
+      "steps": [
+        3
+      ]
+    },
+    "0.005": {
+      "betas": [
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95
+      ],
+      "count": 229,
+      "dampings": [
+        "0.5",
+        "0.6",
+        "0.7",
+        "0.75",
+        "0.8",
+        "0.85",
+        "0.875",
+        "0.9",
+        "0.925",
+        "rule_EW",
+        "rule_WT"
+      ],
+      "gammas": [
+        0.25,
+        0.5,
+        1.0,
+        2.0,
+        4.0,
+        16.0
+      ],
+      "operators": [
+        "EP",
+        "P",
+        "Plog"
+      ],
+      "steps": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "s2": {
+    "best": 0.911600154316461,
+    "configurations": 16800,
+    "instances": 180,
+    "top50_means_equal": true,
+    "top50_rederived": true
+  },
+  "s3": {
+    "W1_dev_mean": 0.9133017993128375,
+    "W1_dev_mean_matches_frozen": true,
+    "W1_is_top1": true,
+    "W1_rank": 1,
+    "W3_dev_mean": 0.9131831681458378,
+    "W3_dev_mean_matches_frozen": true,
+    "W3_rank": 2,
+    "best": 0.9133017993128375,
+    "configurations": 3465,
+    "rows_per_instance_in_source": 15750
+  },
+  "s4": {
+    "S1_current": 0.9028541833921512,
+    "S3_alt": 0.8492811948703687
+  },
+  "sha256": "13066bc4f4450904d3084e6ae9645307ff099ae764a777ac99f18ca1d4ed09d9",
+  "sha256_matches": true,
+  "tiebreak_within_0.001": {
+    "W1_median_cost_ms": 0.7515599727630615,
+    "candidates": 10,
+    "lowest_median_cost_config": "1212a780141b2ca9f7e163c335ec4bf021e620a1",
+    "lowest_median_cost_is_W1": false,
+    "min_median_cost_ms": 0.7281154990196228
+  }
+}

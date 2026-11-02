@@ -1,0 +1,20 @@
+config_id,config,rho
+35034e473b0013538a58df68627c616ba86b06eb,"{""baseline"": ""oracle:scalar"", ""kind"": ""baseline"", ""name"": ""oracle:scalar""}",0.9104716326831964
+85630cec63e9329d7886f4c8c37c09f660a1fee8,"{""baseline"": ""oracle:scalar_WT"", ""kind"": ""baseline"", ""name"": ""oracle:scalar_WT""}",0.8831623512853441
+a92c8ca417fa8ce9931d342988f1ab207cf1593b,"{""baseline"": ""IRIE_exact"", ""kind"": ""baseline"", ""name"": ""IRIE_exact""}",0.8800430078616746
+e19af9f56de3958cfa768e9f242e68180922616e,"{""baseline"": ""rule_EW"", ""kind"": ""baseline"", ""name"": ""rule_EW""}",0.8571149722111119
+80f9b37bd0bdabea6ab4477b08bd567e5a46a499,"{""baseline"": ""rule_WT"", ""kind"": ""baseline"", ""name"": ""rule_WT""}",0.8103576558942626
+6e2907b7fe2156e260d24d713f8408178b9e5f49,"{""baseline"": ""fixed085"", ""kind"": ""baseline"", ""name"": ""fixed085""}",0.7793640674772645
+750c959d7e6784435601fb664792ff5095e2fff7,"{""baseline"": ""MP1"", ""kind"": ""baseline"", ""name"": ""MP1""}",0.7507349724797516
+3b3c4cfd872aa0c814a41b7ed981b3bdfa9396c9,"{""baseline"": ""MP2"", ""kind"": ""baseline"", ""name"": ""MP2""}",0.7478570100879212
+5da14b0865d1ad01aaf26ed8beeeef189e2f857d,"{""baseline"": ""RAPr:2,1"", ""kind"": ""baseline"", ""name"": ""RAPr:2,1""}",0.7446263079702842
+88809bccdcb7664bf418583fce8447929f9d0266,"{""baseline"": ""Pesc"", ""kind"": ""baseline"", ""name"": ""Pesc""}",0.736484893765381
+3901fe325021417bdc434adf23abd86695a57c91,"{""baseline"": ""RAPr:1,1"", ""kind"": ""baseline"", ""name"": ""RAPr:1,1""}",0.7180138002722353
+8a2f3c731a6e3a48ba67125e5f404f841a52c168,"{""baseline"": ""TotalRank"", ""kind"": ""baseline"", ""name"": ""TotalRank""}",0.7180138002722353
+2a75a4eb611b1024e83afdc30a36482b344a2352,"{""baseline"": ""RAPr:0.5,0.5"", ""kind"": ""baseline"", ""name"": ""RAPr:0.5,0.5""}",0.7102069293566049
+d6e3f36c86a9e2aae152dd949dad50a617984fd6,"{""baseline"": ""MPinf"", ""kind"": ""baseline"", ""name"": ""MPinf""}",0.6614056160952578
+a423a5047b05a8f4620641d6f6ac85bd98d0c084,"{""baseline"": ""IRIE_wc"", ""kind"": ""baseline"", ""name"": ""IRIE_wc""}",0.22512310486641285
+d21d6732ee389ce134453d5c071c616b6554e96a,"{""baseline"": ""heat_kernel:1"", ""kind"": ""baseline"", ""name"": ""heat_kernel:1""}",0.21942958764422152
+3fba1d31b4234e8da822ebaf3e729f256b657e09,"{""baseline"": ""heat_kernel:2"", ""kind"": ""baseline"", ""name"": ""heat_kernel:2""}",0.2051703590898521
+f34e4a4a78f82fadfb659226da4ac01c8f3201db,"{""baseline"": ""heat_kernel:5"", ""kind"": ""baseline"", ""name"": ""heat_kernel:5""}",0.17106600794562762
+f1d375cebc5f330b2fa101a76dd018f5f7b05f38,"{""baseline"": ""heat_kernel:10"", ""kind"": ""baseline"", ""name"": ""heat_kernel:10""}",0.1482562692993089

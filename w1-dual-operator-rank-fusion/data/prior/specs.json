@@ -1,0 +1,1352 @@
+[
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R2",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R3",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "grid",
+"n": 144,
+"pr": "R4",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R2",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R3",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "er",
+"n": 150,
+"pr": "R4",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R2",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R3",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ba",
+"n": 150,
+"pr": "R4",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R2",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R3",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "ws",
+"n": 150,
+"pr": "R4",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R2",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R3",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "uniform",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "dir10",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "dir3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "dir1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "dir0.3",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "logn0.5",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "logn1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "logn2",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "seed5_0.1",
+"rep": 0,
+"panel": "prior"
+},
+{
+"kind": "syn",
+"fam": "sbm",
+"n": 150,
+"pr": "R4",
+"prior": "seed1_0.1",
+"rep": 0,
+"panel": "prior"
+}
+]
