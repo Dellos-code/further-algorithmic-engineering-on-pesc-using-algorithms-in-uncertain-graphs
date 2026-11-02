@@ -1,0 +1,8 @@
+{
+  "seed": 20261102,
+  "unit": "network",
+  "fit": ["existing_synthetic_dev"],
+  "hold": ["existing_synthetic_test2", "existing_synthetic_scale2", "existing_synthetic_prior2", "existing_synthetic_real2", "existing_synthetic_big"],
+  "real_networks": [],
+  "note": "No real-network split is declared until the acquisition script has produced a non-empty manifest."
+}

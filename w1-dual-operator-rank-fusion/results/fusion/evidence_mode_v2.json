@@ -1,0 +1,7 @@
+{
+  "mode": "synthetic",
+  "real_network_count": 0,
+  "basis": "The continuation checkout did not contain the prior acquisition manifest; the new search manifest records actual attempts and this mode is conservative until acquisition succeeds.",
+  "primary_evidence": ["synthetic"],
+  "utc": "2026-11-02T14:41:07Z"
+}
