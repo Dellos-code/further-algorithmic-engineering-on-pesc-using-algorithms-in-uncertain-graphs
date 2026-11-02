@@ -1,0 +1,23 @@
+{
+  "covariate": "kappa_E",
+  "rule": {
+    "family": "logistic",
+    "params": [
+      8.837392205886385,
+      0.9522496452121414
+    ]
+  },
+  "cv_score_dev": 0.9314533788682943,
+  "members": {
+    "w": "w1.algorithm.W1",
+    "m": "w1.diffusion.knz_mp(iters=2)"
+  },
+  "constant_c0": 0.175,
+  "hypotheses": [
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "selection_data": "dev only; yB objective",
+  "utc": "2026-11-02T14:42:53.587580+00:00"
+}

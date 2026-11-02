@@ -1,0 +1,60 @@
+[
+  {
+    "source": "networkx_karate",
+    "url": "https://raw.githubusercontent.com/networkx/networkx/main/examples/graph/karate_club_graph.py",
+    "utc": "2026-11-02T14:42:28.659158+00:00",
+    "outcome": "failed",
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "source": "snap_ca_grqc",
+    "url": "https://snap.stanford.edu/data/ca-GrQc.txt.gz",
+    "utc": "2026-11-02T14:42:28.874686+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "snap_email_enron",
+    "url": "https://snap.stanford.edu/data/email-Enron.txt.gz",
+    "utc": "2026-11-02T14:42:28.876079+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "konect",
+    "url": "https://konect.cc/networks/",
+    "utc": "2026-11-02T14:42:28.879369+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "string",
+    "url": "https://stringdb-downloads.org/download/protein.links.v12.0/9606.protein.links.v12.0.txt.gz",
+    "utc": "2026-11-02T14:42:28.880648+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "network_repository",
+    "url": "https://networkrepository.com/",
+    "utc": "2026-11-02T14:42:28.881801+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "netzschleuder",
+    "url": "https://networks.skewed.de/",
+    "utc": "2026-11-02T14:42:28.882480+00:00",
+    "outcome": "failed",
+    "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "source": "gnn_benchmark",
+    "url": "https://raw.githubusercontent.com/shchur/gnn-benchmark/master/README.md",
+    "utc": "2026-11-02T14:42:28.883295+00:00",
+    "status": 200,
+    "bytes": 14471,
+    "sha256": "9b5b8743b32882cd67687d4c882cc485dfad570cdfc67488d67772367cf4ca62",
+    "outcome": "downloaded"
+  }
+]
